@@ -66,7 +66,7 @@
 .card__title {
   padding: 3px 10px;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 22px;
   font-variation-settings: "wght" var(--heading-font-weight);
 }
 
@@ -117,7 +117,7 @@
 }
 
 .card__text + .card__text {
-  margin-block-start: 27px;
+  margin-block-start: 25px;
 }
 
 .card__buttons {
@@ -148,16 +148,10 @@
 .card__like-button {
   inline-size: 130px;
   min-block-size: 38px;
-  border: 2px solid #000;
   padding: 0;
-  background-color: #fff;
-  font-family: var(--accent-font), fantasy;
-  font-size: 14px;
-  cursor: pointer;
 }
 
 .dialog {
-  display: none;
   inline-size: 353px;
   border: 2px solid #000;
   padding: 30px;
@@ -166,7 +160,7 @@
   font-family: var(--accent-font), fantasy;
 }
 
-.dialog:popover-open {
+.dialog[open] {
   display: grid;
   gap: 30px;
 }
@@ -192,13 +186,8 @@
 .dialog__button {
   inline-size: 100%;
   block-size: 38px;
-  border: 2px solid #000;
   padding: 9px 17px;
-  background-color: #fff;
-  font-family: var(--accent-font), fantasy;
-  font-size: 14px;
   line-height: 1;
-  cursor: pointer;
 }
 
 .dialog::backdrop {
@@ -210,13 +199,13 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 2px solid #000;
+  margin-block-end: 100px;
   padding: 15px 20px;
-  background-color: #fff;
-  font-family: var(--accent-font), fantasy;
-  font-size: 14px;
   line-height: 0.9;
-  cursor: pointer;
+}
+
+.save-button .button__text {
+  white-space: nowrap;
 }
 
 .save-button__icon {
@@ -261,29 +250,26 @@
   filter: sepia(0.6) saturate(2) hue-rotate(20deg);
 }
 
-.card__like-button,
-.save-button,
-.dialog__button {
+.button {
   position: relative;
   overflow: hidden;
+  border: 2px solid #000;
+  background-color: #fff;
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  cursor: pointer;
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button:focus,
-.save-button:focus,
-.dialog__button:focus {
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible,
-.save-button:focus-visible,
-.dialog__button:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.card__like-button::before,
-.save-button::before,
-.dialog__button::before {
+.button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -292,9 +278,7 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::before,
-.save-button:hover::before,
-.dialog__button:hover::before {
+.button:hover::before {
   transform: translateX(0);
 }
 
@@ -306,10 +290,6 @@
 }
 
 @media (width <= 375px) {
-  .card__label {
-    inset-inline-end: 11px;
-  }
-
   .save-button {
     flex-direction: column;
     inline-size: 304px;
@@ -322,7 +302,8 @@
   }
 
   .dialog {
-    inline-size: 323px;
+    inline-size: 341px;
+    padding-inline: 40px;
   }
 
   .dialog__button {
